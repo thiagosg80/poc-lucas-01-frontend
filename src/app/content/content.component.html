@@ -1,0 +1,33 @@
+<mat-card class="card-margins">
+    <mat-card-content>
+        <div class="input-fields-container">
+            <app-input-field label="IDH"
+                             class="width100"
+                             (inputFieldOutValue)="setIDH($event)">
+            </app-input-field>
+            <app-input-field label="PIB"
+                             class="width100"
+                             (inputFieldOutValue)="setPIB($event)">
+            </app-input-field>
+            <app-input-field label="Renda Per Capita"
+                             class="width100"
+                             (inputFieldOutValue)="setRendaPerCapita($event)">
+            </app-input-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-flat-button
+                color="primary"
+                (click)="enquadrar()"
+                *ngIf="!isRequesting">
+            Enquadrar
+        </button>
+    </mat-card-actions>
+    <mat-progress-bar mode="indeterminate"
+                      *ngIf="isRequesting">
+    </mat-progress-bar>
+</mat-card>
+
+<app-resultado [input]="requestResult"
+               *ngIf="requestResult.descricao">
+</app-resultado>

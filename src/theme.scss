@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$blue-palette, 800);
+$my-accent: mat.define-palette(mat.$yellow-palette, 800);
+$my-warn: mat.define-palette(mat.$red-palette, 800);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn
+ )
+));
+
+@include mat.all-component-themes($my-theme);
+
+$my-hue: 200;
+
+.pallete {
+  color: mat.get-contrast-color-from-palette(mat.$purple-palette, $my-hue);
+  background-color: mat.get-color-from-palette(mat.$purple-palette, $my-hue);
+}
