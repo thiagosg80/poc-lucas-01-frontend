@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build:
+      context: ../.
+      dockerfile: docker/Dockerfile
+      args:
+        - UBUNTU_VERSION=${UBUNTU_VERSION}
+    volumes:
+      - ../.:${WORK_DIR}
+    ports:
+      - "4455:4200"
+    working_dir: ${WORK_DIR}
+    command: "/bin/bash docker/setup.sh"
