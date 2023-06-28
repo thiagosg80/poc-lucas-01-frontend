@@ -7,6 +7,8 @@ import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
     exports: [
@@ -16,7 +18,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
         FormsModule,
         MatButtonModule,
         MatCardModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatFormFieldModule,
+        MatSnackBarModule
     ]
 })
 

@@ -1,3 +1,9 @@
 .input-fields-container {
     display: flex;
 }
+
+@media screen and (max-width: 850px) {
+    .input-fields-container {
+        display: block;
+    }
+}

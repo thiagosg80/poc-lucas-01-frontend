@@ -19,7 +19,8 @@
         <button mat-flat-button
                 color="primary"
                 (click)="enquadrar()"
-                *ngIf="!isRequesting">
+                *ngIf="!isRequesting"
+                [disabled]="hasEmptyField()">
             Enquadrar
         </button>
     </mat-card-actions>
