@@ -4,5 +4,3 @@ FROM ubuntu:$UBUNTU_VERSION
 RUN apt update && \
     apt install --assume-yes nodejs && \
     apt install --assume-yes npm
-
-RUN npm install -g @angular/cli
