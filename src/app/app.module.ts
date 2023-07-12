@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +13,10 @@ import { InputFieldComponent } from './input-field/input-field.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultadoComponent } from './resultado/resultado.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { LucroCommonTableComponent } from './resultado/lucro-common-table/lucro-common-table.component';
+import { MelhorEnquadramentoComponent } from './resultado/melhor-enquadramento/melhor-enquadramento.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -18,7 +24,9 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     ToolbarComponent,
     ContentComponent,
     InputFieldComponent,
-    ResultadoComponent
+    ResultadoComponent,
+    LucroCommonTableComponent,
+    MelhorEnquadramentoComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +38,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     NgxMaskPipe
   ],
   providers: [
-    provideNgxMask()
+    provideNgxMask(),
+    {provide: LOCALE_ID, useValue: 'pt'}
   ],
   bootstrap: [AppComponent]
 })

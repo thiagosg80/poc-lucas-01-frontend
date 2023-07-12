@@ -1,0 +1,25 @@
+.melhor-enquadramento {
+    padding: 20px;
+    background-color: #5dd75d;
+    margin-top: 5px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.outros-enquadramentos {
+    display: flex;
+    margin-top: 5px;
+}
+
+.mid-enquadramento {
+    padding: 20px;
+    background-color: #a3cfa8;
+    flex-grow: 1;
+    margin-right: 5px;
+}
+
+.pior-enquadramento {
+    padding: 20px;
+    background-color: #d8efdd;
+    color: #a3a3a3;
+}

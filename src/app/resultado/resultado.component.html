@@ -1,8 +1,139 @@
-<mat-card class="card-margins">
-    <mat-card-content>
-        Enquadramento de acordo com os parâmetros informados:
-        <p class="enquadramento-display">
-            {{enquadramentoDescricaoDisplay}}
-        </p>
-    </mat-card-content>
-</mat-card>
+<app-melhor-enquadramento [analise]="input">
+</app-melhor-enquadramento>
+
+<div class="card-margins padding-bottom-20px">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Simples Nacional
+                </mat-panel-title>
+                <mat-panel-description>
+                    Carga Tributária Anual: R$ {{simplesNacionalCargaTributariaAnual | number: '2.2-2':'pt-BR'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            
+            <table mat-table [dataSource]="simplesNacionalDataSource">
+                <ng-container matColumnDef="aliquota">
+                    <th mat-header-cell *matHeaderCellDef> Alíquota </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.aliquota}}%
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="aPagarNoPeriodo">
+                    <th mat-header-cell *matHeaderCellDef> A Pagar </th>
+                    <td mat-cell *matCellDef="let element">
+                        R$ {{element.aPagarNoPeriodo | number: '2.2-2':'pt-BR'}}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="inss">
+                    <th mat-header-cell *matHeaderCellDef> INSS </th>
+                    <td mat-cell *matCellDef="let element">
+                        R$ {{element.inss | number: '2.2-2':'pt-BR'}}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="percentualDosTributos">
+                    <th mat-header-cell *matHeaderCellDef> Percentual dos Tributos </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.percentualDosTributos}}%
+                    </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="simplesNacionalDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: simplesNacionalDisplayedColumns;"></tr>
+            </table>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Lucro Presumido
+                </mat-panel-title>
+                <mat-panel-description>
+                    Carga Tributária Anual: R$ {{lucroPresumidoCargaTributariaAnual | number: '2.2-2':'pt-BR'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="container-table">
+                <table mat-table [dataSource]="lucroPresumidoDataSource">
+                    <ng-container matColumnDef="presuncaoIRPJmontante">
+                        <th mat-header-cell *matHeaderCellDef> Presunção Lucro IRPJ </th>
+                        <td mat-header-cell mat-cell *matCellDef="let element">
+                            R$ {{element.presuncaoIRPJ.montante | number: '2.2-2':'pt-BR'}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="presuncaoIRPJaliquota">
+                        <th mat-header-cell *matHeaderCellDef> Presunção Lucro IRPJ - alíquota </th>
+                        <td mat-header-cell mat-cell *matCellDef="let element">
+                            {{element.presuncaoIRPJ.aliquota}}%
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="presuncaoCSLLmontante">
+                        <th mat-header-cell *matHeaderCellDef> Presunção Lucro CSLL </th>
+                        <td mat-header-cell mat-cell *matCellDef="let element">
+                            R$ {{element.presuncaoCSLL.montante | number: '2.2-2':'pt-BR'}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="presuncaoCSLLaliquota">
+                        <th mat-header-cell *matHeaderCellDef> Presunção Lucro CSLL - alíquota </th>
+                        <td mat-header-cell mat-cell *matCellDef="let element">
+                            {{element.presuncaoCSLL.aliquota}}%
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="lucroPresumidoDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: lucroPresumidoDisplayedColumns;"></tr>
+                </table>
+
+                <app-lucro-common-table [dataSource]="lucroPresumidoDataSource">
+                </app-lucro-common-table>
+                
+                <table mat-table [dataSource]="lucroPresumidoDataSource">
+                    <ng-container matColumnDef="percentualDosTributos">
+                        <th mat-header-cell *matHeaderCellDef> Percentual dos Tributos </th>
+                        <td mat-header-cell mat-cell *matCellDef="let element">
+                            {{element.percentualDosTributos}}%
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="lucroPresumidoDisplayedColumns02"></tr>
+                    <tr mat-row *matRowDef="let row; columns: lucroPresumidoDisplayedColumns02;"></tr>
+                </table>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Lucro Real
+                </mat-panel-title>
+                <mat-panel-description>
+                    Carga Tributária Anual: R$ {{lucroRealCargaTributariaAnual | number: '2.2-2':'pt-BR'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="container-table">
+                <app-lucro-common-table [dataSource]="lucroRealDataSource">
+                </app-lucro-common-table>
+                
+                <table mat-table [dataSource]="lucroRealDataSource">
+                    <ng-container matColumnDef="apurado">
+                        <th mat-header-cell *matHeaderCellDef> Lucro Real Apurado no Ano </th>
+                        <td mat-header-cell mat-cell *matCellDef="let element">
+                            R$ {{element.apurado | number: '2.2-2':'pt-BR'}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="percentualDosTributos">
+                        <th mat-header-cell *matHeaderCellDef> Percentual dos Tributos </th>
+                        <td mat-header-cell mat-cell *matCellDef="let element">
+                            {{element.percentualDosTributos}}%
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="lucroRealDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: lucroRealDisplayedColumns;"></tr>
+                </table>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

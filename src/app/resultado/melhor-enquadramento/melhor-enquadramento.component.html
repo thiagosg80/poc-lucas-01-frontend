@@ -1,0 +1,20 @@
+<mat-card class="card-margins">
+    <mat-card-header>
+        <mat-card-title>
+            Melhor Enquadramento
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="melhor-enquadramento">
+            {{enquadramentos[0].label}} - {{enquadramentos[0].percentual}}%
+        </div>
+        <div class="outros-enquadramentos">
+            <div class="mid-enquadramento">
+                {{enquadramentos[1].label}} - {{enquadramentos[1].percentual}}%
+            </div>
+            <div class="pior-enquadramento">
+                {{enquadramentos[2].label}} - {{enquadramentos[2].percentual}}%
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

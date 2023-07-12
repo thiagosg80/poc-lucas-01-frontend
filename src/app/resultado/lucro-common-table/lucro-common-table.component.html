@@ -1,0 +1,47 @@
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="irpj">
+        <th mat-header-cell *matHeaderCellDef> IRPJ </th>
+        <td mat-header-cell mat-cell *matCellDef="let element">
+            R$ {{element.irpj | number: '2.2-2':'pt-BR'}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="adicionalIRPJ">
+        <th mat-header-cell *matHeaderCellDef> Adicional IRPJ </th>
+        <td mat-header-cell mat-cell *matCellDef="let element">
+            R$ {{element.adicionalIRPJ | number: '2.2-2':'pt-BR'}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="csll">
+        <th mat-header-cell *matHeaderCellDef> CSLL </th>
+        <td mat-header-cell mat-cell *matCellDef="let element">
+            R$ {{element.csll | number: '2.2-2':'pt-BR'}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="pis">
+        <th mat-header-cell *matHeaderCellDef> PIS </th>
+        <td mat-header-cell mat-cell *matCellDef="let element">
+            R$ {{element.pis | number: '2.2-2':'pt-BR'}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="cofins">
+        <th mat-header-cell *matHeaderCellDef> COFINS </th>
+        <td mat-header-cell mat-cell *matCellDef="let element">
+            R$ {{element.cofins | number: '2.2-2':'pt-BR'}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="icms">
+        <th mat-header-cell *matHeaderCellDef> ICMS </th>
+        <td mat-header-cell mat-cell *matCellDef="let element">
+            R$ {{element.icms | number: '2.2-2':'pt-BR'}}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="inss">
+        <th mat-header-cell *matHeaderCellDef> INSS </th>
+        <td mat-header-cell mat-cell *matCellDef="let element">
+            R$ {{element.inss | number: '2.2-2':'pt-BR'}}
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="lucroDisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: lucroDisplayedColumns;"></tr>
+</table>

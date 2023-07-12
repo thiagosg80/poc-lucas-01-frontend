@@ -10,6 +10,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
     exports: [
@@ -22,7 +24,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatProgressBarModule,
         MatFormFieldModule,
         MatSnackBarModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatDividerModule,
+        MatTableModule
     ]
 })
 
