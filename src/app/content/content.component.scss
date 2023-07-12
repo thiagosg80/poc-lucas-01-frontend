@@ -2,7 +2,11 @@
     display: flex;
 }
 
-@media screen and (max-width: 850px) {
+.mat-accordion {
+    display: block;
+}
+
+@media screen and (max-width: 1115px) {
     .input-fields-container {
         display: block;
     }

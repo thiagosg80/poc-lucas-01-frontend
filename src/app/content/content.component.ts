@@ -8,17 +8,41 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent {
-  iDH = '';
-  pIB = '';
-  rendaPerCapita= '';
+  faturamentoPeriodo = '';
+  salarios = '';
+  proLabores = '';
+  vendas = '';
+  valorMedioCreditoICMS = '';
+  valorMedioCreditoPIS = '';
+  valorMedioCreditoCOFINS = '';
+  comprasMP = '';
+  despesaComFolha = '';
+  outrasDespesas = '';
+  impostos = '';
   isRequesting = false;
   requestResult: any = {};
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  enquadrar(): void {
-    const path: string = 'http://localhost:5000/enquadramentos/enquadrar?';
-    const url: string = `${path}pib=${this.pIB}&idh=${this.iDH}&rp=${this.rendaPerCapita}`;
+  analisar(): void {
+    const path: string = 'http://localhost:5000/analises?';
+
+    const pathFragments = [
+      path,
+      `faturamento-periodo=${this.faturamentoPeriodo}`,
+      `&valor-salarios=${this.salarios}`,
+      `&valor-pro-labore=${this.proLabores}`,
+      `&vendas=${this.vendas}`,
+      `&valor-medio-credito-icms=${this.valorMedioCreditoICMS}`,
+      `&valor-medio-credito-pis=${this.valorMedioCreditoPIS}`,
+      `&valor-medio-credito-cofins=${this.valorMedioCreditoCOFINS}`,
+      `&compras-mp=${this.comprasMP}`,
+      `&despesa-com-folha=${this.despesaComFolha}`,
+      `&outras-despesas=${this.outrasDespesas}`,
+      `&impostos=${this.impostos}`
+    ];
+
+    const url: string = pathFragments.join('');
     this.isRequesting = true;
 
     this.http.get<any>(url).subscribe({
@@ -38,22 +62,69 @@ export class ContentComponent {
     this.requestResult = {};
   }
 
-  setIDH(input: string): void {
-    this.iDH = input;
+  setFaturamentoPeriodo(input: string): void {
+    this.faturamentoPeriodo = input;
     this.requestResult = {};
   }
 
-  setPIB(input: string): void {
-    this.pIB = input;
+  setSalarios(input: string): void {
+    this.salarios = input;
     this.requestResult = {};
   }
 
-  setRendaPerCapita(input: string): void {
-    this.rendaPerCapita = input;
+  setProLabores(input: string): void {
+    this.proLabores = input;
+    this.requestResult = {};
+  }
+
+  setValorMedioCreditoICMS(input: string): void {
+    this.valorMedioCreditoICMS = input;
+    this.requestResult = {};
+  }
+
+  setValorMedioCreditoPIS(input: string): void {
+    this.valorMedioCreditoPIS = input;
+    this.requestResult = {};
+  }
+
+  setValorMedioCreditoCOFINS(input: string): void {
+    this.valorMedioCreditoCOFINS = input;
+    this.requestResult = {};
+  }
+
+  setVendas(input: string): void {
+    this.vendas = input;
+    this.requestResult = {};
+  }
+
+  setComprasMP(input: string): void {
+    this.comprasMP = input;
+    this.requestResult = {};
+  }
+
+  setDespesaComFolha(input: string): void {
+    this.despesaComFolha = input;
+    this.requestResult = {};
+  }
+
+  setOutrasDespesas(input: string): void {
+    this.outrasDespesas = input;
+    this.requestResult = {};
+  }
+
+  setImpostos(input: string): void {
+    this.impostos = input;
     this.requestResult = {};
   }
 
   hasEmptyField(): boolean {
-    return this.iDH.length == 0 || this.pIB.length == 0 || this.rendaPerCapita.length == 0;
+    const mandatory = [
+      this.faturamentoPeriodo,
+      this.salarios,
+      this.proLabores,
+      this.vendas
+    ];
+
+    return mandatory.some(m => m.length == 0);
   }
 }

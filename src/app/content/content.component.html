@@ -1,29 +1,84 @@
 <mat-card class="card-margins">
     <mat-card-content>
         <div class="input-fields-container">
-            <app-input-field label="IDH"
+            <app-input-field label="Faturamento"
                              class="width100"
-                             (inputFieldOutValue)="setIDH($event)">
+                             (inputFieldOutValue)="setFaturamentoPeriodo($event)">
             </app-input-field>
-            <app-input-field label="PIB"
+            <app-input-field label="Salários"
                              class="width100"
-                             (inputFieldOutValue)="setPIB($event)">
+                             (inputFieldOutValue)="setSalarios($event)">
             </app-input-field>
-            <app-input-field label="Renda Per Capita"
+            <app-input-field label="Pró-labores"
                              class="width100"
-                             (inputFieldOutValue)="setRendaPerCapita($event)">
+                             (inputFieldOutValue)="setProLabores($event)">
+            </app-input-field>
+            <app-input-field label="Vendas"
+                             class="width100"
+                             (inputFieldOutValue)="setVendas($event)">
             </app-input-field>
         </div>
     </mat-card-content>
-    <mat-card-actions>
+</mat-card>
+
+<mat-accordion class="card-margins">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Mais informações
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <div class="input-fields-container">
+            <app-input-field label="Valor Médio de Crédito de ICMS"
+                            class="width100"
+                            (inputFieldOutValue)="setValorMedioCreditoICMS($event)">
+            </app-input-field>
+            <app-input-field label="Valor Médio de Crédito de PIS"
+                            class="width100"
+                            (inputFieldOutValue)="setValorMedioCreditoPIS($event)">
+            </app-input-field>
+        </div>
+
+        <div class="input-fields-container">
+            <app-input-field label="Valor Médio de Crédito de COFINS"
+                            class="width100"
+                            (inputFieldOutValue)="setValorMedioCreditoCOFINS($event)">
+            </app-input-field>
+            <app-input-field label="Compras MP"
+                            class="width100"
+                            (inputFieldOutValue)="setComprasMP($event)">
+            </app-input-field>
+        </div>
+
+        <div class="input-fields-container">
+            <app-input-field label="Despesa com Folha"
+                            class="width100"
+                            (inputFieldOutValue)="setDespesaComFolha($event)">
+            </app-input-field>
+            <app-input-field label="Outras Despesas"
+                            class="width100"
+                            (inputFieldOutValue)="setOutrasDespesas($event)">
+            </app-input-field>
+            <app-input-field label="Impostos"
+                            class="width100"
+                            (inputFieldOutValue)="setImpostos($event)">
+            </app-input-field>
+        </div>
+
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-card class="card-margins">
+    <mat-card-content>
         <button mat-flat-button
                 color="primary"
-                (click)="enquadrar()"
+                (click)="analisar()"
                 *ngIf="!isRequesting"
                 [disabled]="hasEmptyField()">
-            Enquadrar
+            Analisar
         </button>
-    </mat-card-actions>
+    </mat-card-content>
     <mat-progress-bar mode="indeterminate"
                       *ngIf="isRequesting">
     </mat-progress-bar>

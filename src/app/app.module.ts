@@ -10,6 +10,7 @@ import { ContentComponent } from './content/content.component';
 import { InputFieldComponent } from './input-field/input-field.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultadoComponent } from './resultado/resultado.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,13 @@ import { ResultadoComponent } from './resultado/resultado.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-  providers: [],
+  providers: [
+    provideNgxMask()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

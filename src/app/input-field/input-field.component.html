@@ -5,6 +5,8 @@
         </mat-label>
         <input matInput
             type="text"
+            mask="separator.2"
+            thousandSeparator="."
             [(ngModel)]="value"
             (input)="changeInputValue(value)">
         <button *ngIf="value"

@@ -9,6 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
     exports: [
@@ -20,7 +21,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         MatCardModule,
         MatProgressBarModule,
         MatFormFieldModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatExpansionModule
     ]
 })
 
