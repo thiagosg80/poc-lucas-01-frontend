@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-content',
@@ -25,10 +26,9 @@ export class ContentComponent {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   analisar(): void {
-    const path: string = 'http://localhost:5000/analises?';
-
     const pathFragments = [
-      path,
+      environment.apiDomain,
+      'analises?',
       `faturamento-periodo=${this.faturamentoPeriodo}`,
       `&valor-salarios=${this.salarios}`,
       `&valor-pro-labore=${this.proLabores}`,
