@@ -1,9 +1,10 @@
 .melhor-enquadramento {
     padding: 20px;
-    background-color: #5dd75d;
+    background-color: #004D40;
     margin-top: 5px;
     font-size: 2em;
     font-weight: bold;
+    color: #FFFFFF;
 }
 
 .outros-enquadramentos {
@@ -13,13 +14,13 @@
 
 .mid-enquadramento {
     padding: 20px;
-    background-color: #a3cfa8;
+    background-color: #4DB6AC;
     flex-grow: 1;
     margin-right: 5px;
 }
 
 .pior-enquadramento {
     padding: 20px;
-    background-color: #d8efdd;
+    background-color: #B2DFDB;
     color: #a3a3a3;
 }
