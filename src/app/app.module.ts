@@ -15,6 +15,8 @@ import { ResultadoComponent } from './resultado/resultado.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { LucroCommonTableComponent } from './resultado/lucro-common-table/lucro-common-table.component';
 import { MelhorEnquadramentoComponent } from './resultado/melhor-enquadramento/melhor-enquadramento.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileUploadSectionComponent } from './file-upload-section/file-upload-section.component';
 
 registerLocaleData(localePt);
 
@@ -26,7 +28,9 @@ registerLocaleData(localePt);
     InputFieldComponent,
     ResultadoComponent,
     LucroCommonTableComponent,
-    MelhorEnquadramentoComponent
+    MelhorEnquadramentoComponent,
+    FileUploadComponent,
+    FileUploadSectionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<div>
+    <app-file-upload (selectedFiles)="setFiles($event)"></app-file-upload>
+</div>
+<mat-divider class="file-upload-divisor"></mat-divider>
+<div>
+    <button mat-raised-button class="margin-right-10px" color="primary" (click)="send()" *ngIf="hasFiles()">
+        Preencher a partir de arquivos
+    </button>
+    <button mat-raised-button>
+        Preencher manualmente
+    </button>
+</div>

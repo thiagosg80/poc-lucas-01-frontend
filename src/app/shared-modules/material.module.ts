@@ -12,6 +12,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
     exports: [
@@ -26,7 +27,8 @@ import {MatTableModule} from '@angular/material/table';
         MatSnackBarModule,
         MatExpansionModule,
         MatDividerModule,
-        MatTableModule
+        MatTableModule,
+        MatChipsModule
     ]
 })
 

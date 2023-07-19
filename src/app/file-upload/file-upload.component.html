@@ -1,0 +1,17 @@
+<input type="file" multiple class="file-input" (input)="onFileSelected($event)" #fileUpload/>
+
+<div class="file-upload display-flex">
+    <button mat-mini-fab color="primary" (click)="fileUpload.click()" class="margin-right-10px">
+        <mat-icon>attach_file</mat-icon>
+    </button>
+    <div *ngIf="!hasFiles()">
+        Nenhum arquivo selecionado.
+    </div>
+    <div *ngIf="hasFiles()" class="overflow-auto">
+        <mat-chip-listbox>
+            <mat-chip *ngFor="let file of files">
+                {{file.name}}
+            </mat-chip>
+        </mat-chip-listbox>
+    </div>
+ </div>
