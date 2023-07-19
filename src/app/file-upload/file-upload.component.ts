@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-file-upload',
@@ -8,6 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class FileUploadComponent {
   files: File[] = [];
   @Output() selectedFiles = new EventEmitter<File[]>;
+  @Input() allowedTypes: string = '';
 
   onFileSelected(event: Event) {
     const TARGET: any = event.target;

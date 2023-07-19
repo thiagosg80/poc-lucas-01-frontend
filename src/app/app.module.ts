@@ -17,6 +17,7 @@ import { LucroCommonTableComponent } from './resultado/lucro-common-table/lucro-
 import { MelhorEnquadramentoComponent } from './resultado/melhor-enquadramento/melhor-enquadramento.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileUploadSectionComponent } from './file-upload-section/file-upload-section.component';
+import { ClienteIdentificacaoComponent } from './cliente-identificacao/cliente-identificacao.component';
 
 registerLocaleData(localePt);
 
@@ -30,7 +31,8 @@ registerLocaleData(localePt);
     LucroCommonTableComponent,
     MelhorEnquadramentoComponent,
     FileUploadComponent,
-    FileUploadSectionComponent
+    FileUploadSectionComponent,
+    ClienteIdentificacaoComponent
   ],
   imports: [
     BrowserModule,

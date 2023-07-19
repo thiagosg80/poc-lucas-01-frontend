@@ -1,4 +1,4 @@
-<input type="file" multiple class="file-input" (input)="onFileSelected($event)" #fileUpload/>
+<input type="file" multiple class="file-input" (input)="onFileSelected($event)" accept="{{allowedTypes}}" #fileUpload/>
 
 <div class="file-upload display-flex">
     <button mat-mini-fab color="primary" (click)="fileUpload.click()" class="margin-right-10px">

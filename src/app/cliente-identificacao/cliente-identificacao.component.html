@@ -1,0 +1,45 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <p class="nome-fantasia">
+                    {{identificacao.nomeFantasia}}
+                </p>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="overflow-auto">
+            <table mat-table [dataSource]="dataSource1">
+                <ng-container matColumnDef="cnpj">
+                    <th mat-header-cell *matHeaderCellDef> CNPJ </th>
+                    <td mat-header-cell mat-cell *matCellDef="let element">
+                        {{element.cnpj}}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="dataAbertura">
+                    <th mat-header-cell *matHeaderCellDef> Data de Abertura </th>
+                    <td mat-header-cell mat-cell *matCellDef="let element">
+                        {{element.dataAbertura}}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="section1Columns"></tr>
+                <tr mat-row *matRowDef="let row; columns: section1Columns;"></tr>
+            </table>
+        </div>
+
+        <div class="overflow-auto">
+            <table mat-table [dataSource]="dataSource1">
+                <ng-container matColumnDef="atividadePrincipal">
+                    <th mat-header-cell *matHeaderCellDef> Atividade Principal </th>
+                    <td mat-header-cell mat-cell *matCellDef="let element">
+                        {{element.atividadePrincipal}}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="section2Columns"></tr>
+                <tr mat-row *matRowDef="let row; columns: section2Columns;"></tr>
+            </table>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

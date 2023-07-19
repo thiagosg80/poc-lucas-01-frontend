@@ -1,23 +1,30 @@
+<app-cliente-identificacao *ngIf="hasSomeIdentification" [identificacao]="identificacao">
+</app-cliente-identificacao>
+
 <mat-card class="card-margins">
     <mat-card-content>
-        <app-file-upload-section></app-file-upload-section>
+        <app-file-upload-section (openFields)="setWantFillManual($event)"
+                                 (arquivoDadoResult)="setArquivoDadoResult($event)"></app-file-upload-section>
     </mat-card-content>
 </mat-card>
 
-<mat-card class="card-margins">
+<mat-card class="card-margins" *ngIf="wantFillManual">
     <mat-card-content>
         <div class="input-fields-container">
             <app-input-field label="Faturamento"
                              class="width100"
-                             (inputFieldOutValue)="setFaturamentoPeriodo($event)">
+                             (inputFieldOutValue)="setFaturamentoPeriodo($event)"
+                             [analiseInputValue]="inputResult.faturamentoPeriodo.toString()">
             </app-input-field>
             <app-input-field label="Salários"
                              class="width100"
-                             (inputFieldOutValue)="setSalarios($event)">
+                             (inputFieldOutValue)="setSalarios($event)"
+                             [analiseInputValue]="inputResult.salariosValor.toString()">
             </app-input-field>
             <app-input-field label="Pró-labores"
                              class="width100"
-                             (inputFieldOutValue)="setProLabores($event)">
+                             (inputFieldOutValue)="setProLabores($event)"
+                             [analiseInputValue]="inputResult.proLaboreValor.toString()">
             </app-input-field>
             <app-input-field label="Vendas"
                              class="width100"
@@ -27,29 +34,34 @@
     </mat-card-content>
 </mat-card>
 
-<mat-accordion class="card-margins">
+<mat-accordion class="card-margins" *ngIf="wantFillManual">
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Mais informações
+                <mat-chip-listbox *ngIf="hasAdditionalData">
+                    <mat-chip-option color="accent" selected>
+                        {{ additionalDataQuantity }}
+                    </mat-chip-option>
+                </mat-chip-listbox>
             </mat-panel-title>
         </mat-expansion-panel-header>
         
         <div class="input-fields-container">
             <app-input-field label="Valor Médio de Crédito de ICMS"
                             class="width100"
-                            (inputFieldOutValue)="setValorMedioCreditoICMS($event)">
+                            (inputFieldOutValue)="setValorMedioCreditoICMS($event)"
+                            [analiseInputValue]="inputResult.valorMedioCreditoICMS.toString()">
             </app-input-field>
             <app-input-field label="Valor Médio de Crédito de PIS"
                             class="width100"
-                            (inputFieldOutValue)="setValorMedioCreditoPIS($event)">
+                            (inputFieldOutValue)="setValorMedioCreditoPIS($event)"
+                            [analiseInputValue]="inputResult.valorMedioCreditoPIS.toString()">
             </app-input-field>
-        </div>
-
-        <div class="input-fields-container">
             <app-input-field label="Valor Médio de Crédito de COFINS"
                             class="width100"
-                            (inputFieldOutValue)="setValorMedioCreditoCOFINS($event)">
+                            (inputFieldOutValue)="setValorMedioCreditoCOFINS($event)"
+                            [analiseInputValue]="inputResult.valorMedioCreditoCOFINS.toString()">
             </app-input-field>
             <app-input-field label="Compras MP"
                             class="width100"
@@ -70,6 +82,26 @@
                             class="width100"
                             (inputFieldOutValue)="setImpostos($event)">
             </app-input-field>
+
+            <div class="input-field-container">
+                <mat-form-field class="width100">
+                    <mat-label>
+                        Lucro Apurado
+                    </mat-label>
+                    <input matInput
+                        type="text"
+                        mask="separator.2"
+                        thousandSeparator="."
+                        [(ngModel)]="lucroApurado"
+                        [disabled]="true">
+                        
+                    <button *ngIf="lucroApurado.includes('-')" matSuffix mat-icon-button color="warn">
+                        <mat-icon>
+                            thumb_down
+                        </mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
         </div>
 
     </mat-expansion-panel>
