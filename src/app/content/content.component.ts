@@ -45,7 +45,8 @@ export class ContentComponent {
       `&valor-medio-credito-icms=${this.getHandleComma(this.valorMedioCreditoICMS)}`,
       `&valor-medio-credito-pis=${this.getHandleComma(this.valorMedioCreditoPIS)}`,
       `&valor-medio-credito-cofins=${this.getHandleComma(this.valorMedioCreditoCOFINS)}`,
-      `&lucro-apurado=${this.getHandleComma(this.lucroApurado)}`
+      `&lucro-apurado=${this.getHandleComma(this.lucroApurado)}`,
+      `&cnaes=${this.getCNAEs()}`
     ];
 
     const url: string = pathFragments.join('');
@@ -156,7 +157,8 @@ export class ContentComponent {
     const IDENTIFICACAO_FIELDS = [
       this.identificacao.cnpj,
       this.identificacao.nomeFantasia,
-      this.identificacao.atividadePrincipal,
+      this.identificacao.atividadePrincipal.cnae,
+      this.identificacao.atividadePrincipal.descricao,
       this.identificacao.dataAbertura
     ];
 
@@ -188,5 +190,12 @@ export class ContentComponent {
 
   private getCommonValue(target: string): number {
     return Number(target);
+  }
+
+  private getCNAEs(): string {
+    const CNAE_PRINCIPAL = this.identificacao.atividadePrincipal.cnae;
+    const CNAES_SECUNDARIAS = this.identificacao.atividadesSecundarias.map(as => as.cnae).join(',');
+
+    return CNAE_PRINCIPAL.concat(',').concat(CNAES_SECUNDARIAS);
   }
 }
