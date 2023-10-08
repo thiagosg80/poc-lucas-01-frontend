@@ -1,13 +1,9 @@
-export class Identificacao {
-    cnpj: string;
-    nomeFantasia: string;
-    atividadePrincipal: string;
-    dataAbertura: string;
+import { Atividade } from "./atividade";
 
-    constructor() {
-        this.cnpj = '';
-        this.nomeFantasia ='';
-        this.atividadePrincipal = '';
-        this.dataAbertura = '';
-    }
+export class Identificacao {
+    cnpj: string = '';
+    nomeFantasia: string = '';
+    atividadePrincipal: Atividade = new Atividade;
+    atividadesSecundarias: Atividade[] = [];
+    dataAbertura: string = '';
 }

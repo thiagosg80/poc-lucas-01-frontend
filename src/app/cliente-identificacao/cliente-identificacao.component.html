@@ -30,10 +30,38 @@
 
         <div class="overflow-auto">
             <table mat-table [dataSource]="dataSource1">
-                <ng-container matColumnDef="atividadePrincipal">
-                    <th mat-header-cell *matHeaderCellDef> Atividade Principal </th>
+                <ng-container matColumnDef="cnae">
+                    <th mat-header-cell *matHeaderCellDef> CNAE Atividade Principal </th>
                     <td mat-header-cell mat-cell *matCellDef="let element">
-                        {{element.atividadePrincipal}}
+                        {{element.atividadePrincipal.cnae}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="descricao">
+                    <th mat-header-cell *matHeaderCellDef> Descrição Atividade Principal </th>
+                    <td mat-header-cell mat-cell *matCellDef="let element">
+                        {{element.atividadePrincipal.descricao}}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="section2Columns"></tr>
+                <tr mat-row *matRowDef="let row; columns: section2Columns;"></tr>
+            </table>
+        </div>
+
+        <div class="overflow-auto">
+            <table mat-table [dataSource]="dataSource2">
+                <ng-container matColumnDef="cnae">
+                    <th mat-header-cell *matHeaderCellDef> CNAE Atividade Secundária </th>
+                    <td mat-header-cell mat-cell *matCellDef="let element">
+                        {{element.cnae}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="descricao">
+                    <th mat-header-cell *matHeaderCellDef> Descrição Atividade Secundária </th>
+                    <td mat-header-cell mat-cell *matCellDef="let element">
+                        {{element.descricao}}
                     </td>
                 </ng-container>
 

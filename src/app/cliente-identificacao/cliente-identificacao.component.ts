@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Identificacao } from './identificacao';
+import { Atividade } from './atividade';
 
 @Component({
   selector: 'app-cliente-identificacao',
@@ -9,6 +10,7 @@ import { Identificacao } from './identificacao';
 export class ClienteIdentificacaoComponent implements OnChanges {
   @Input() identificacao: Identificacao = new Identificacao;
   dataSource1: Identificacao[] = [];
+  dataSource2: Atividade[] = [];
 
   section1Columns = [
     'cnpj',
@@ -16,10 +18,12 @@ export class ClienteIdentificacaoComponent implements OnChanges {
   ];
 
   section2Columns = [
-    'atividadePrincipal'
+    'cnae',
+    'descricao'
   ];
 
   ngOnChanges(): void {
     this.dataSource1 = [this.identificacao];
+    this.dataSource2 = this.identificacao.atividadesSecundarias;
   }
 }

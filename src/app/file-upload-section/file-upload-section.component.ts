@@ -85,6 +85,9 @@ export class FileUploadSectionComponent {
     this.identificacao.atividadePrincipal = IDENTIFICACAO_RESPONSE.atividade_principal ||
     this.identificacao.atividadePrincipal;
 
+    this.identificacao.atividadesSecundarias = IDENTIFICACAO_RESPONSE.atividades_secundarias ||
+    this.identificacao.atividadesSecundarias;
+
     this.identificacao.dataAbertura = IDENTIFICACAO_RESPONSE.data_abertura || this.identificacao.dataAbertura;
     this.arquivoDado.identificacao = this.identificacao;
   }
