@@ -32,6 +32,11 @@ export class ContentComponent {
   additionalDataQuantity: number = 0;
   hasAdditionalData = false;
   hasSomeIdentification = false;
+  dataSource1: string[] = [];
+
+  section1Columns = [
+    'periodo'
+  ];
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -46,7 +51,9 @@ export class ContentComponent {
       `&valor-medio-credito-pis=${this.getHandleComma(this.valorMedioCreditoPIS)}`,
       `&valor-medio-credito-cofins=${this.getHandleComma(this.valorMedioCreditoCOFINS)}`,
       `&lucro-apurado=${this.getHandleComma(this.lucroApurado)}`,
-      `&cnaes=${this.getCNAEs()}`
+      `&cnaes=${this.getCNAEs()}`,
+      `&periodo-inicio=${this.inputResult.periodo.inicio}`,
+      `&periodo-fim=${this.inputResult.periodo.fim}`
     ];
 
     const url: string = pathFragments.join('');
@@ -163,6 +170,8 @@ export class ContentComponent {
     ];
 
     this.hasSomeIdentification = IDENTIFICACAO_FIELDS.some(f => f);
+    const PERIODO = this.inputResult.periodo;
+    this.dataSource1 = [PERIODO.inicio.concat(' a ').concat(PERIODO.fim)];
   }
 
   private getAdditionalDatas(inputResult: InputAnalise): number[] {

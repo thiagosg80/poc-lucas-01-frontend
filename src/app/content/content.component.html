@@ -10,6 +10,21 @@
 
 <mat-card class="card-margins" *ngIf="wantFillManual">
     <mat-card-content>
+
+        <div class="overflow-auto" *ngIf="inputResult.periodo.inicio">
+            <table mat-table [dataSource]="dataSource1">
+                <ng-container matColumnDef="periodo">
+                    <th mat-header-cell *matHeaderCellDef> Período </th>
+                    <td mat-header-cell mat-cell *matCellDef="let element">
+                        {{element}}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="section1Columns"></tr>
+                <tr mat-row *matRowDef="let row; columns: section1Columns;"></tr>
+            </table>
+        </div>
+        
         <div class="input-fields-container">
             <app-input-field label="Faturamento"
                              class="width100"

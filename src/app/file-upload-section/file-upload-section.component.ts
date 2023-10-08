@@ -56,37 +56,42 @@ export class FileUploadSectionComponent {
 
   private processFields(response: any): void {
     const INPUT_ANALISE_RESPONSE = response.input_analise;
+
     this.inputAnalise.faturamentoPeriodo = INPUT_ANALISE_RESPONSE.faturamento_periodo ||
-    this.inputAnalise.faturamentoPeriodo;
+        this.inputAnalise.faturamentoPeriodo;
 
     this.inputAnalise.salariosValor = INPUT_ANALISE_RESPONSE.salarios || this.inputAnalise.salariosValor;
     this.inputAnalise.proLaboreValor = INPUT_ANALISE_RESPONSE.pro_labores || this.inputAnalise.proLaboreValor;
     this.inputAnalise.vendas = INPUT_ANALISE_RESPONSE.vendas || this.inputAnalise.vendas;
 
     this.inputAnalise.valorMedioCreditoICMS = INPUT_ANALISE_RESPONSE.valor_medio_credito_icms ||
-    this.inputAnalise.valorMedioCreditoICMS;
+        this.inputAnalise.valorMedioCreditoICMS;
 
     this.inputAnalise.valorMedioCreditoPIS = INPUT_ANALISE_RESPONSE.valor_medio_credito_pis ||
-    this.inputAnalise.valorMedioCreditoPIS;
+        this.inputAnalise.valorMedioCreditoPIS;
 
     this.inputAnalise.valorMedioCreditoCOFINS = INPUT_ANALISE_RESPONSE.valor_medio_credito_cofins ||
-    this.inputAnalise.valorMedioCreditoCOFINS;
+        this.inputAnalise.valorMedioCreditoCOFINS;
 
     this.inputAnalise.comprasMP = INPUT_ANALISE_RESPONSE.compras_mp || this.inputAnalise.comprasMP;
     this.inputAnalise.despesaComFolha = INPUT_ANALISE_RESPONSE.despesa_com_folha || this.inputAnalise.despesaComFolha;
     this.inputAnalise.outrasDespesas = INPUT_ANALISE_RESPONSE.outras_despesas || this.inputAnalise.outrasDespesas;
     this.inputAnalise.impostos = INPUT_ANALISE_RESPONSE.impostos || this.inputAnalise.impostos;
     this.inputAnalise.lucroApurado = INPUT_ANALISE_RESPONSE.lucro_apurado || this.inputAnalise.lucroApurado;
+
+    this.inputAnalise.periodo = INPUT_ANALISE_RESPONSE.periodo.inicio == '01/01/0001' ? this.inputAnalise.periodo :
+        INPUT_ANALISE_RESPONSE.periodo;
+
     this.arquivoDado.inputAnalise = this.inputAnalise;
     const IDENTIFICACAO_RESPONSE = response.identificacao;
     this.identificacao.cnpj = IDENTIFICACAO_RESPONSE.cnpj || this.identificacao.cnpj;
     this.identificacao.nomeFantasia = IDENTIFICACAO_RESPONSE.nome_fantasia || this.identificacao.nomeFantasia;
 
-    this.identificacao.atividadePrincipal = IDENTIFICACAO_RESPONSE.atividade_principal ||
-    this.identificacao.atividadePrincipal;
+    this.identificacao.atividadePrincipal = IDENTIFICACAO_RESPONSE.atividade_principal.cnae ?
+        IDENTIFICACAO_RESPONSE.atividade_principal : this.identificacao.atividadePrincipal;
 
-    this.identificacao.atividadesSecundarias = IDENTIFICACAO_RESPONSE.atividades_secundarias ||
-    this.identificacao.atividadesSecundarias;
+    this.identificacao.atividadesSecundarias = IDENTIFICACAO_RESPONSE.atividades_secundarias.length > 0 ?
+        IDENTIFICACAO_RESPONSE.atividades_secundarias : this.identificacao.atividadesSecundarias;
 
     this.identificacao.dataAbertura = IDENTIFICACAO_RESPONSE.data_abertura || this.identificacao.dataAbertura;
     this.arquivoDado.identificacao = this.identificacao;
