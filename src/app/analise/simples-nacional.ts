@@ -1,15 +1,9 @@
-export class SimplesNacional {
-    aliquota: number;
-    aPagarNoPeriodo: number;
-    inss: number;
-    cargaTributariaAnual: number;
-    percentualDosTributos: number;
+import { SimplesNacionalEncaixe } from "./simples-nacional-encaixe";
 
-    constructor() {
-        this.aliquota = 0;
-        this.aPagarNoPeriodo = 0;
-        this.inss = 0;
-        this.cargaTributariaAnual = 0;
-        this.percentualDosTributos = 0;
-    }
+export class SimplesNacional {
+    aPagarNoPeriodo: number = 0;
+    inss: number = 0;
+    cargaTributariaAnual: number = 0;
+    percentualDosTributos: number = 0;
+    encaixes: SimplesNacionalEncaixe[] = [];
 }
