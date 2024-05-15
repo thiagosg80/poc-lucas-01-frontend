@@ -98,27 +98,22 @@
                             (inputFieldOutValue)="setImpostos($event)">
             </app-input-field>
 
-            <div class="input-field-container">
-                <mat-form-field class="width100">
-                    <mat-label>
-                        Lucro Apurado
-                    </mat-label>
-                    <input matInput
-                        type="text"
-                        mask="separator.2"
-                        thousandSeparator="."
-                        [(ngModel)]="lucroApurado"
-                        [disabled]="true">
-                        
-                    <button *ngIf="lucroApurado.includes('-')" matSuffix mat-icon-button color="warn">
-                        <mat-icon>
+            <div class="input-field-container" class="width100">
+                <div class="marginbottom1">
+                    Lucro Apurado
+                </div>
+                <div class="display-flex">
+                    <div class="fontbold">
+                        {{lucroApurado | number: '.2'}}
+                    </div>
+                    <div>
+                        <mat-icon color="warn" *ngIf="lucroApurado.includes('-')">
                             thumb_down
                         </mat-icon>
-                    </button>
-                </mat-form-field>
+                    </div>
+                </div>
             </div>
         </div>
-
     </mat-expansion-panel>
 </mat-accordion>
 
