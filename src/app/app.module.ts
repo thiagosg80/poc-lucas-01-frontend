@@ -10,7 +10,7 @@ import { MaterialModule } from './shared-modules/material.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ContentComponent } from './content/content.component';
 import { InputFieldComponent } from './input-field/input-field.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ResultadoComponent } from './resultado/resultado.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { LucroCommonTableComponent } from './resultado/lucro-common-table/lucro-common-table.component';
@@ -21,32 +21,26 @@ import { ClienteIdentificacaoComponent } from './cliente-identificacao/cliente-i
 
 registerLocaleData(localePt);
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    ContentComponent,
-    InputFieldComponent,
-    ResultadoComponent,
-    LucroCommonTableComponent,
-    MelhorEnquadramentoComponent,
-    FileUploadComponent,
-    FileUploadSectionComponent,
-    ClienteIdentificacaoComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule,
-    NgxMaskDirective,
-    NgxMaskPipe
-  ],
-  providers: [
-    provideNgxMask(),
-    {provide: LOCALE_ID, useValue: 'pt'}
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ToolbarComponent,
+        ContentComponent,
+        InputFieldComponent,
+        ResultadoComponent,
+        LucroCommonTableComponent,
+        MelhorEnquadramentoComponent,
+        FileUploadComponent,
+        FileUploadSectionComponent,
+        ClienteIdentificacaoComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        NgxMaskDirective,
+        NgxMaskPipe], providers: [
+        provideNgxMask(),
+        { provide: LOCALE_ID, useValue: 'pt' },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }

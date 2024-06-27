@@ -2,11 +2,11 @@
 
 @include mat.core();
 
-$my-primary: mat.define-palette(mat.$blue-palette, 800);
-$my-accent: mat.define-palette(mat.$yellow-palette, 800);
-$my-warn: mat.define-palette(mat.$red-palette, 800);
+$my-primary: mat.m2-define-palette(mat.$m2-blue-palette, 800);
+$my-accent: mat.m2-define-palette(mat.$m2-yellow-palette, 800);
+$my-warn: mat.m2-define-palette(mat.$m2-red-palette, 800);
 
-$my-theme: mat.define-light-theme((
+$my-theme: mat.m2-define-light-theme((
  color: (
    primary: $my-primary,
    accent: $my-accent,
@@ -19,6 +19,6 @@ $my-theme: mat.define-light-theme((
 $my-hue: 200;
 
 .pallete {
-  color: mat.get-contrast-color-from-palette(mat.$purple-palette, $my-hue);
-  background-color: mat.get-color-from-palette(mat.$purple-palette, $my-hue);
+  color: mat.m2-get-contrast-color-from-palette(mat.$m2-purple-palette, $my-hue);
+  background-color: mat.m2-get-color-from-palette(mat.$m2-purple-palette, $my-hue);
 }
